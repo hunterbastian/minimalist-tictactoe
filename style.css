@@ -1,0 +1,186 @@
+/* Global styles */
+body {
+    background: linear-gradient(to right, rgb(172, 183, 190), rgba(193, 210, 225, 0.8), rgba(240, 248, 255, 1));
+    font-family: Arial, sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color 0.5s ease;
+    font-family: 'Roboto Mono', monospace; /* Set Roboto Mono font for the entire body */
+  }
+  
+  /* Wrapper for vertical centering */
+  #game-board-wrapper {
+    position: relative;
+    top: 30%;
+    transform: translateY(-50%);
+  }
+  
+  /* Grid styles */
+  #game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin: 20px auto;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* Prevent any overflow during animation */
+  }
+  
+  .cell {
+    width: 100px;
+    height: 100px;
+    background-color: #f0f0f0; /* Default background color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background-color 0.5s ease; /* Add transition for background color */
+}
+  
+.cell:hover {
+    background-color: #d5dbdb; /* Slightly darker gray on hover */
+}
+  
+  /* Button styling */
+  button {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #3498db;
+  }
+  
+  .reset-button {
+    background-color: #2980b9;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.5s ease;
+}
+  
+  button:hover {
+    background-color: #3498db;
+  }
+
+.reset-button:hover {
+    background-color: #3498db; /* Lighter blue on hover */
+}
+  
+  /* Footer styling */
+  footer {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #2c3e50;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+/* Shake animation keyframes (horizontal movement only) */
+@keyframes shake {
+    0%   { transform: translateX(0); }
+    25%  { transform: translateX(-5px); }
+    50%  { transform: translateX(5px); }
+    75%  { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+
+  @keyframes tiny-bounce {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    30% {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+    60% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    80% {
+      transform: translateY(-1px);
+      opacity: 0.98;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  
+
+.tiny-bounce {
+  animation: tiny-bounce 0.15s ease;
+}
+  
+  
+/* Grid styles (without animation) */
+.tic-tac-toe-grid {
+    will-change: transform;
+  }
+  
+  /* Shake class to trigger the animation */
+.shake {
+    animation: shake 0.5s ease-in-out;
+  }
+
+  #current-turn {
+    margin: 150px 0; /* Increase margin above and below */
+    font-size: 18px; /* Optional: Adjust font size for visibility */
+    color: #2c3e50; /* Optional: Set the text color */
+    position: relative; /* Adjust positioning */
+    z-index: 1; /* Ensure it appears above other elements */
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    font-family: 'Roboto Mono', monospace; /* Use the same font */
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
