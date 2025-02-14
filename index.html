@@ -7,8 +7,7 @@
   <title>minimalist tic tac toe</title>
 </head>
 <body>
-
-  <h1>minimalist tic tac toe</h1>
+    <h1>minimalist tic tac toe</h1>
 
   <button id="reset" class="reset-button">reset</button>
 
@@ -16,7 +15,7 @@
     <div id="game-board" class="tic-tac-toe-grid">
       <div class="cell" data-index="0"></div>
       <div class="cell" data-index="1"></div>
-      <div class="cell" data-index="2"></div>
+      <div class="cell" data-index="2"></div>   
       <div class="cell" data-index="3"></div>
       <div class="cell" data-index="4"></div>
       <div class="cell" data-index="5"></div>
@@ -26,20 +25,19 @@
     </div>
   </div>
 
-  <div id="current-turn">next turn: X</div> <!-- Added turn display -->
- 
-  <footer>
-    <p>&copy; 2025 hunter bastian</p>
-  </footer>
+    <div id="current-turn">next turn: X</div>
 
-  <script src="script.js"></script>
+    <footer>
+        <p>&copy; 2025 hunter bastian</p>
+    </footer>
 
-  <div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
-        <p id="modal-message">Player X wins!</p>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <p id="modal-message">Player X wins!</p>
+        </div>
     </div>
-</div>
 
+    <script src="script.js"></script>
 </body>
 </html>
