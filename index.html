@@ -9,7 +9,10 @@
 <body>
     <h1>minimalist tic tac toe</h1>
 
-  <button id="reset" class="reset-button">reset</button>
+  <div class="button-container">
+    <button id="reset" class="reset-button">reset</button>
+    <button id="profile-btn" class="profile-button"><span id="current-profile">guest</span></button>
+  </div>
 
   <div id="game-board-wrapper">
     <div id="game-board" class="tic-tac-toe-grid">
@@ -35,6 +38,33 @@
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <p id="modal-message">Player X wins!</p>
+        </div>
+    </div>
+    
+    <!-- Simplified Profile Modal -->
+    <div id="profile-modal" class="modal">
+        <div class="modal-content profile-content">
+            <span class="profile-close close-button">&times;</span>
+            
+            <!-- Profile selection list at the top -->
+            <div id="profile-list">
+                <!-- Profile list will be populated dynamically -->
+            </div>
+            
+            <!-- Profile form in the middle -->
+            <div class="profile-form">
+                <input type="text" id="profile-name" placeholder="new profile">
+                <button id="save-profile" class="profile-button">save</button>
+            </div>
+            
+            <!-- Current profile info at the bottom -->
+            <div class="profile-header">
+                <p><span id="current-profile-display">guest</span></p>
+                <div class="profile-stats" id="profile-stats-container">
+                    <div class="stat-item">X wins: <span id="profile-x-wins">0</span></div>
+                    <div class="stat-item">O wins: <span id="profile-o-wins">0</span></div>
+                </div>
+            </div>
         </div>
     </div>
 
