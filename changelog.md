@@ -5,8 +5,19 @@ All notable changes to the Minimalist Tic Tac Toe game will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.3.1] - 2025-03-11
+## [1.3.1] - 2025-03-12
 - Repositioned close button (X) in profile modal closer to the right upper corner for better usability
+- Fixed profile modal animations ensuring consistent closing behavior across all methods:
+  - Clicking X button
+  - Clicking profile button again
+  - Hitting ESC key
+  - Clicking outside the modal
+- Added similar animation system to the AI menu for consistent UX:
+  - Fixed ESC key handling for both profile and AI menus
+  - Implemented proper closing animation for AI difficulty selector
+- Fixed reset button shake animation
+- Fixed background colors not being properly reset when using the reset button
+- Updates to changelog and readme text.
 
 ## [1.3.0] - 2025-03-06
 - Added player profile system with localStorage support

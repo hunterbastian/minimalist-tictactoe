@@ -12,9 +12,30 @@
   <div class="button-container">
     <button id="reset" class="reset-button">reset</button>
     <button id="profile-btn" class="profile-button"><span id="current-profile">guest</span></button>
+    <div class="ai-button-group">
+      <button id="ai-toggle-btn" class="ai-button">
+        <span class="text-container">
+          <span class="default-text">vs human</span>
+          <span class="hover-text">AI</span>
+        </span>
+        <span id="ai-reset" class="ai-reset-icon">&times;</span>
+      </button>
+      <div id="current-difficulty" class="difficulty-indicator">medium</div>
+    </div>
+  </div>
+
+  <!-- AI Difficulty Controls (hidden by default) -->
+  <div id="ai-controls" class="ai-controls">
+    <div class="difficulty-label">AI difficulty:</div>
+    <div class="difficulty-buttons">
+      <button id="easy-btn" class="difficulty-btn">easy</button>
+      <button id="medium-btn" class="difficulty-btn selected">medium</button>
+      <button id="hard-btn" class="difficulty-btn">hard</button>
+    </div>
   </div>
 
   <div id="game-board-wrapper">
+    <div id="ai-settings-message" class="settings-overlay">Please select AI difficulty</div>
     <div id="game-board" class="tic-tac-toe-grid">
       <div class="cell" data-index="0"></div>
       <div class="cell" data-index="1"></div>
