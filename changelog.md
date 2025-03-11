@@ -5,7 +5,9 @@ All notable changes to the Minimalist Tic Tac Toe game will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.3.1] - 2025-03-11
+## [1.3.1] - ai update - 2025-03-11
+- Added AI opponent with three difficulty levels (easy, medium, hard)
+- Added AI menu with animated transitions
 - Added consistent animation system to the AI menu for improved user experience
 - Added ESC key handling for the AI menu
 - Repositioned close button (X) in profile modal closer to the right upper corner for better usability
