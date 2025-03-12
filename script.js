@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const profileNameInput = document.getElementById('profile-name');
     const saveProfileBtn = document.getElementById('save-profile');
     const profileList = document.getElementById('profile-list');
+    const resetProfileBtn = document.getElementById('reset-profile-btn');
+    const resetWarning = document.getElementById('reset-warning');
     
     // AI controls
     const aiToggleBtn = document.getElementById('ai-toggle-btn');
@@ -773,6 +775,126 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     profileCloseBtn.addEventListener('click', animateProfileModalClose);
     saveProfileBtn.addEventListener('click', saveNewProfile);
+    
+    // Reset profile button functionality
+    let hoverTimer;
+    let countdown = 3;
+    let resetReady = false;
+    let countdownEnabled = false; // New state to track if countdown is enabled
+    
+    resetProfileBtn.addEventListener('mouseenter', function() {
+        // Don't allow reset for guest profile
+        if (currentProfile === 'guest') {
+            resetWarning.textContent = "Cannot reset guest profile";
+            resetWarning.style.opacity = '1';
+            return;
+        }
+        
+        // Only show hover message if countdown isn't already running
+        // and the button hasn't been clicked yet
+        if (!countdownEnabled) {
+            resetWarning.textContent = "Click to begin reset process";
+            resetWarning.style.opacity = '1';
+        }
+    });
+    
+    resetProfileBtn.addEventListener('mouseleave', function() {
+        // Clear timer and reset countdown
+        clearInterval(hoverTimer);
+        resetWarning.style.opacity = '0';
+        resetReady = false;
+        resetProfileBtn.classList.remove('ready');
+        resetProfileBtn.classList.remove('countdown');
+        
+        // Also reset the active state if we leave before completing the countdown
+        if (countdownEnabled && !resetReady) {
+            countdownEnabled = false;
+            resetProfileBtn.classList.remove('active');
+        }
+    });
+    
+    resetProfileBtn.addEventListener('click', function() {
+        // Don't allow reset for guest profile
+        if (currentProfile === 'guest') {
+            resetWarning.textContent = "Cannot reset guest profile";
+            resetWarning.style.opacity = '1';
+            return;
+        }
+        
+        // If countdown is complete, perform the reset
+        if (resetReady) {
+            resetProfileStats();
+            resetReady = false;
+            countdownEnabled = false; // Reset the enabled state
+            resetProfileBtn.classList.remove('ready');
+            resetWarning.style.opacity = '0';
+        } 
+        // If countdown is not enabled yet, enable it and start countdown immediately
+        else if (!countdownEnabled) {
+            countdownEnabled = true;
+            resetProfileBtn.classList.add('active');
+            resetWarning.textContent = "Starting countdown...";
+            resetWarning.style.opacity = '1';
+            
+            // Start countdown immediately since user is already hovering
+            setTimeout(() => {
+                countdown = 3;
+                updateWarningText();
+                
+                // Add countdown class for dimmed appearance
+                resetProfileBtn.classList.add('countdown');
+                
+                // Set interval for countdown
+                hoverTimer = setInterval(() => {
+                    countdown--;
+                    if (countdown <= 0) {
+                        clearInterval(hoverTimer);
+                        resetReady = true;
+                        resetProfileBtn.classList.remove('countdown');
+                        resetProfileBtn.classList.add('ready');
+                        resetWarning.textContent = "Ready! Click to reset stats now";
+                    } else {
+                        updateWarningText();
+                    }
+                }, 1000);
+            }, 500);
+        }
+    });
+    
+    function updateWarningText() {
+        resetWarning.textContent = `Able to reset in ${countdown}...`;
+    }
+    
+    function resetProfileStats() {
+        // Get profiles
+        const profiles = JSON.parse(localStorage.getItem('tictactoe_profiles'));
+        
+        // Reset stats for current profile but keep the name
+        profiles[currentProfile].wins = 0;
+        profiles[currentProfile].xWins = 0;
+        profiles[currentProfile].oWins = 0;
+        
+        // Save back to localStorage
+        localStorage.setItem('tictactoe_profiles', JSON.stringify(profiles));
+        
+        // Update display
+        updateProfileWins();
+        updateProfileList();
+        
+        // Get elements to apply shake animation
+        const profileDisplay = document.getElementById('current-profile-display');
+        const statsContainer = document.getElementById('profile-stats-container');
+        
+        // Add shake animation to profile name and stats
+        profileDisplay.classList.add('shake');
+        statsContainer.classList.add('shake');
+        
+        // Remove shake animation class after animation completes
+        setTimeout(() => {
+            profileDisplay.classList.remove('shake');
+            statsContainer.classList.remove('shake');
+        }, 500); // Duration of the shake animation
+    }
     
     // AI button event listeners
     aiToggleBtn.addEventListener('click', toggleAIMenu);

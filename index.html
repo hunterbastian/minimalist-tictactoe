@@ -7,6 +7,11 @@
   <title>minimalist tic tac toe</title>
 </head>
 <body>
+    <!-- Changelog Button -->
+    <div id="changelog-btn" class="changelog-button">
+        <div class="paper-icon"></div>
+    </div>
+    
     <h1>minimalist tic tac toe</h1>
 
   <div class="button-container">
@@ -86,9 +91,27 @@
                     <div class="stat-item">O wins: <span id="profile-o-wins">0</span></div>
                 </div>
             </div>
+
+            <!-- Reset Profile Button -->
+            <div class="reset-profile-container">
+                <button id="reset-profile-btn" class="reset-profile-button">reset profile</button>
+                <div id="reset-warning" class="reset-warning">Warning: This will reset all stats</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Changelog Modal -->
+    <div id="changelog-modal" class="modal changelog-modal">
+        <div class="modal-content changelog-content">
+            <span class="changelog-close close-button">&times;</span>
+            <h2>Changelog</h2>
+            <div id="changelog-content" class="changelog-content-text">
+                <!-- Changelog content will be loaded here -->
+            </div>
         </div>
     </div>
 
     <script src="script.js"></script>
+    <script src="changelog.js"></script>
 </body>
 </html>
