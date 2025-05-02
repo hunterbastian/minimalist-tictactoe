@@ -1,6 +1,6 @@
 # minimalist tic-tac-toe
 
-## how to Play
+## how to play
 
 1. Click on any cell to place your mark (X goes first)
 2. Create a row of three of your marks (horizontally, vertically, or diagonally) to win
