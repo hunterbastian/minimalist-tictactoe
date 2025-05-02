@@ -1,6 +1,6 @@
-# Minimalist Tic Tac Toe
+# minimalist tic-tac-toe
 
-## How to Play
+## how to Play
 
 1. Click on any cell to place your mark (X goes first)
 2. Create a row of three of your marks (horizontally, vertically, or diagonally) to win
@@ -8,12 +8,12 @@
 4. Toggle between human opponent and AI using the AI button
 5. Create and manage player profiles with the profile button
 
-## Local Storage
+## local storage
 
 The game uses your browser's local storage to save:
 - Player profiles
 - Win statistics
 
-## Created by
+## created by
 
 Hunter Bastian, 2025 
