@@ -18,4 +18,4 @@ The game uses your browser's local storage to save:
 
 ## created by
 
-Hunter Bastian, 2025 
+Hunter Bastian - 2025 
