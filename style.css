@@ -974,3 +974,15 @@ animation: tiny-bounce 0.15s ease;
   vertical-align: middle; /* Helps align with text */
   display: inline-block; /* Ensure proper layout box */
 }
+
+/* WIP Modal Specific Styles */
+#wip-modal {
+  background-color: transparent; /* Remove dark overlay, just use blur */
+}
+
+.wip-content {
+  max-width: 200px; /* Smaller than other modals */
+  padding: 25px; /* A bit more padding for the short message */
+  text-align: center;
+  font-size: 1.2em;
+}

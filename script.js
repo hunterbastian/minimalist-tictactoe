@@ -31,6 +31,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const gameBoard = document.getElementById('game-board');
     const aiSettingsMessage = document.getElementById('ai-settings-message');
     
+    // WIP Modal elements
+    const settingsBtn = document.getElementById('settings-btn');
+    const wipModal = document.getElementById('wip-modal');
+    const wipCloseBtn = document.querySelector('.wip-close-button');
+    
     // Game state
     let currentPlayer = 'X';
     let board = ['', '', '', '', '', '', '', '', ''];
@@ -749,6 +754,66 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.style.display = "none";
     }
 
+    // --- WIP Modal Functions ---
+    function openWIPModal() {
+        const wipContent = wipModal.querySelector('.wip-content');
+        wipContent.style.animation = '';
+        wipModal.style.display = 'block';
+        void wipContent.offsetWidth; // Force reflow
+        wipContent.style.animation = 'modal-appear 0.3s ease-out forwards';
+
+        gameBoard.classList.add('waiting-for-settings'); // Apply blur
+
+        // Add event listeners for closing
+        setTimeout(() => {
+            document.addEventListener('click', handleOutsideWIPClick);
+            document.addEventListener('keydown', handleWIPModalEscKey);
+        }, 10);
+    }
+
+    function animateWIPModalClose() {
+        const wipContent = wipModal.querySelector('.wip-content');
+        if (window.getComputedStyle(wipModal).display !== 'block') return;
+
+        removeWIPModalEventListeners();
+        wipContent.style.animation = '';
+        void wipContent.offsetWidth; // Force reflow
+        wipContent.style.animation = 'modal-disappear 0.3s ease-out forwards';
+
+        setTimeout(() => {
+            completeWIPModalClose();
+        }, 280); // Animation duration
+    }
+
+    function completeWIPModalClose() {
+        wipModal.style.display = 'none';
+        const wipContent = wipModal.querySelector('.wip-content');
+        wipContent.style.animation = '';
+
+        // Remove blur only if AI selection isn't also trying to keep it blurred
+        if (!aiButtonSelected) { 
+            gameBoard.classList.remove('waiting-for-settings');
+        }
+    }
+
+    function removeWIPModalEventListeners() {
+        document.removeEventListener('click', handleOutsideWIPClick);
+        document.removeEventListener('keydown', handleWIPModalEscKey);
+    }
+
+    function handleOutsideWIPClick(event) {
+        if (wipModal.style.display === 'block' && !wipModal.querySelector('.wip-content').contains(event.target) && event.target !== settingsBtn && !settingsBtn.contains(event.target)) {
+            animateWIPModalClose();
+        }
+    }
+
+    function handleWIPModalEscKey(event) {
+        if (event.key === 'Escape' && wipModal.style.display === 'block') {
+            animateWIPModalClose();
+        }
+    }
+    // --- End WIP Modal Functions ---
+
     // Attach event listeners
     cells.forEach(cell => cell.addEventListener('click', handleCellClick));
     resetButton.addEventListener('click', function() {
@@ -776,6 +841,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     profileCloseBtn.addEventListener('click', animateProfileModalClose);
     saveProfileBtn.addEventListener('click', saveNewProfile);
+    
+    // Settings button event listener for WIP Modal
+    settingsBtn.addEventListener('click', openWIPModal);
+    wipCloseBtn.addEventListener('click', animateWIPModalClose);
     
     // Reset profile button functionality
     let hoverTimer;
@@ -948,6 +1017,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // For the regular game modal
             if (modal.style.display === "block") {
                 closeModal();
+            }
+            // For the WIP modal (added)
+            if (wipModal.style.display === 'block') {
+                animateWIPModalClose(); // Or completeWIPModalClose() if no animation on ESC is desired
             }
         }
     });

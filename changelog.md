@@ -16,6 +16,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added an AI icon next to the "vs human" text within the AI toggle button.
 - Adjusted AI toggle button width for better fit of icon and text.
 - Fixed JavaScript logic to ensure AI icon persists correctly in the AI toggle button.
+- Added a "WIP" (Work In Progress) pop-up modal for the settings button.
+- Styled WIP modal with a transparent background and applied a blur effect to the game grid when active.
 
 ## [1.3.2] - profile reset update - 2025-03-15
 - Added reset profile button to the profile menu
