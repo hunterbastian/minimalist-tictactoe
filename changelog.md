@@ -5,7 +5,8 @@ All notable changes to the Minimalist Tic Tac Toe game will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.3.3] - UI Enhancements & Icons - YYYY-MM-DD 
+
+## [1.3.3] - ui enhancements & icons - 20205-05-06 
 - Added website logo image, positioned in the top-left corner.
 - Set website logo as the favicon.
 - Updated main title text to display as `<minimalist tic tac toe>`.
