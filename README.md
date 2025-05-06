@@ -1,5 +1,7 @@
 # minimalist tic-tac-toe
 
+https://minimalist-tic-tac-toe.netlify.app
+
 ## how to play
 
 1. Click on any cell to place your mark (X goes first)
