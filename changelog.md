@@ -5,18 +5,17 @@ All notable changes to the Minimalist Tic Tac Toe game will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.3.2] - profile update - 2025-03-11
-- Added profile reset functionality with multi-step confirmation process
-- Added 3-second countdown timer for profile reset confirmation
-- Added visual feedback (shake animation) when resetting profile stats
-- Added changelog button and modal with 8-bit paper icon
-- Improved profile modal spacing and layout
-- Enhanced safety with two-click reset confirmation process
+## [1.3.2] - profile reset update - 2025-03-15
+- Added reset profile button to the profile menu
+- Implemented two-step confirmation process for profile reset (click → countdown → click)
+- Added visual state indicators for the reset button (dimmed by default, active during countdown, pulsing when ready)
+- Added shake animation feedback when profile stats are reset
+- Designed safety features to prevent accidental resets (countdown timer, hover requirement)
+- Ensured reset only affects stats and preserves the profile name
+- Added extra spacing in profile modal for better visual organization
 
 ### Fixed
-- Fixed UI issues in profile menu
-- Improved visual feedback for profile reset button states
-- Added clear tooltips and instructions for reset workflow
+- Improved profile modal layout with better padding
 
 ## [1.3.1] - ai update - 2025-03-11
 - Added AI opponent with three difficulty levels (easy, medium, hard)
