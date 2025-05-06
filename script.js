@@ -606,9 +606,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update the AI toggle button text
         const defaultTextSpan = aiToggleBtn.querySelector('.default-text');
         const hoverTextSpan = aiToggleBtn.querySelector('.hover-text');
-        
+        const aiIconHTML = '<img src="images/AI.svg" alt="AI Icon" class="ai-icon-beside-text">';
+
         if (aiEnabled) {
-            defaultTextSpan.textContent = 'vs ai';
+            defaultTextSpan.innerHTML = aiIconHTML + ' vs ai'; // Keep icon
             hoverTextSpan.textContent = ''; // Remove the hover text when AI is enabled
             aiToggleBtn.classList.add('active');
             aiToggleBtn.classList.remove('selected');
@@ -617,7 +618,7 @@ document.addEventListener('DOMContentLoaded', function() {
             gameBoard.classList.remove('waiting-for-settings');
             aiSettingsMessage.classList.remove('visible');
         } else if (aiButtonSelected) {
-            defaultTextSpan.textContent = 'vs ai';
+            defaultTextSpan.innerHTML = aiIconHTML + ' vs ai'; // Keep icon
             hoverTextSpan.textContent = 'cancel'; // When hovering in selected mode, show "cancel"
             aiToggleBtn.classList.add('selected');
             aiToggleBtn.classList.remove('active');
@@ -626,7 +627,7 @@ document.addEventListener('DOMContentLoaded', function() {
             gameBoard.classList.add('waiting-for-settings');
             aiSettingsMessage.classList.add('visible');
         } else {
-            defaultTextSpan.textContent = 'vs human';
+            defaultTextSpan.innerHTML = aiIconHTML + ' vs human';
             hoverTextSpan.textContent = 'vs ai'; // When hovering in human mode, show "vs ai"
             aiToggleBtn.classList.remove('active');
             aiToggleBtn.classList.remove('selected');

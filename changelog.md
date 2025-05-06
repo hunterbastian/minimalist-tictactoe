@@ -5,6 +5,17 @@ All notable changes to the Minimalist Tic Tac Toe game will be documented in thi
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.3] - UI Enhancements & Icons - YYYY-MM-DD 
+- Added website logo image, positioned in the top-left corner.
+- Set website logo as the favicon.
+- Updated main title text to display as `<minimalist tic tac toe>`.
+- Changed main title font to "Inter".
+- Added a decorative line with faded edges beneath the main title.
+- Introduced a settings icon, styled as a button with text "settings", and positioned in the main button row.
+- Added an AI icon next to the "vs human" text within the AI toggle button.
+- Adjusted AI toggle button width for better fit of icon and text.
+- Fixed JavaScript logic to ensure AI icon persists correctly in the AI toggle button.
+
 ## [1.3.2] - profile reset update - 2025-03-15
 - Added reset profile button to the profile menu
 - Implemented two-step confirmation process for profile reset (click → countdown → click)

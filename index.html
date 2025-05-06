@@ -3,11 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="images/square.png">
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Roboto+Mono&display=swap" rel="stylesheet">
   <title>minimalist tic tac toe</title>
 </head>
 <body>
-    <h1>minimalist tic tac toe</h1>
+    <img src="images/square.png" alt="Minimalist Tic Tac Toe Logo" class="website-logo">
+    <div class="header-container">
+        <h1>&lt;minimalist tic tac toe&gt;</h1>
+    </div>
 
   <div class="button-container">
     <button id="reset" class="reset-button">reset</button>
@@ -15,13 +20,14 @@
     <div class="ai-button-group">
       <button id="ai-toggle-btn" class="ai-button">
         <span class="text-container">
-          <span class="default-text">vs human</span>
+          <span class="default-text"><img src="images/AI.svg" alt="AI Icon" class="ai-icon-beside-text"> vs human</span>
           <span class="hover-text">AI</span>
         </span>
         <span id="ai-reset" class="ai-reset-icon">&times;</span>
       </button>
       <div id="current-difficulty" class="difficulty-indicator">medium</div>
     </div>
+    <button id="settings-btn" class="settings-button"><img src="images/settings.svg" alt="Settings"> settings</button>
   </div>
 
   <!-- AI Difficulty Controls (hidden by default) -->
