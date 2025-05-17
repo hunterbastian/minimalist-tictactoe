@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Initialize profiles if not exists
         if (!localStorage.getItem('tictactoe_profiles')) {
             const defaultProfiles = {
-                'guest': { wins: 0, xWins: 0, oWins: 0 }
+                'guest': { xWins: 0, oWins: 0 }
             };
             localStorage.setItem('tictactoe_profiles', JSON.stringify(defaultProfiles));
         } else {
@@ -82,6 +82,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 if (!profiles[name].hasOwnProperty('oWins')) {
                     profiles[name].oWins = 0;
+                    updated = true;
+                }
+                // Remove redundant wins property if it exists
+                if (profiles[name].hasOwnProperty('wins')) {
+                    delete profiles[name].wins;
                     updated = true;
                 }
             }
@@ -175,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Check if profile already exists
             if (!profiles[name]) {
                 // Add new profile with zero wins
-                profiles[name] = { wins: 0, xWins: 0, oWins: 0 };
+                profiles[name] = { xWins: 0, oWins: 0 };
                 localStorage.setItem('tictactoe_profiles', JSON.stringify(profiles));
                 
                 // Select the new profile
@@ -204,9 +209,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function incrementWins() {
         // Get profiles
         const profiles = JSON.parse(localStorage.getItem('tictactoe_profiles'));
-        
-        // Update wins for current profile
-        profiles[currentProfile].wins += 1;
         
         // Update X or O wins based on current player
         if (currentPlayer === 'X') {
@@ -940,7 +942,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const profiles = JSON.parse(localStorage.getItem('tictactoe_profiles'));
         
         // Reset stats for current profile but keep the name
-        profiles[currentProfile].wins = 0;
         profiles[currentProfile].xWins = 0;
         profiles[currentProfile].oWins = 0;
         
