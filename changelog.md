@@ -6,6 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
+## [1.3.4] - ui refinements & messaging improvements - 2025-06-01
+### Added
+- Enhanced turn indicator with glassmorphism design and backdrop blur effects
+- Player-specific colored borders for turn indicator (red for X, blue for O)
+- Modern pill-shaped turn indicator container with smooth transitions
+- Improved AI win messaging - now displays "AI wins!" instead of "player O wins!" when playing against AI
+
+### Changed
+- Removed angle brackets from main title (now displays "minimalist tic tac toe" instead of "<minimalist tic tac toe>")
+- Made title underline bar more minimal (reduced width from 600px to 200px)
+- Lightened title underline bar color for a more subtle appearance
+- Removed website logo from top-left corner for cleaner minimalist design
+
+### Technical
+- Maintained all existing functionality while simplifying visual elements
+- Kept only essential UI enhancements that improve user experience without overwhelming minimalist aesthetic
+
 ## [1.3.3] - ui enhancements & icons - 20205-05-06 
 - Added website logo image, positioned in the top-left corner.
 - Set website logo as the favicon.

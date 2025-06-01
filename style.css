@@ -32,9 +32,9 @@ h1 {
 h1::after { /* New rule for the underline with faded edges */
   content: "";
   display: block;
-  width: 600px; /* Increased width for a really long line */
+  width: 200px; /* Reduced width for a more minimal look */
   height: 1px; /* Thin line */
-  background: linear-gradient(to right, transparent, #2c3e50 40%, #2c3e50 60%, transparent); /* Adjusted gradient for more fade */
+  background: linear-gradient(to right, transparent, #8e9aa7 30%, #8e9aa7 70%, transparent); /* Gradient with faded edges */
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -117,11 +117,6 @@ button:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   filter: brightness(1.1);
-}
-
-button:active {
-  transform: translateY(1px);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Button container for consistent spacing */
@@ -212,11 +207,28 @@ animation: tiny-bounce 0.15s ease;
 }
 
 #current-turn {
-  margin: 150px 0;
   font-size: 18px;
+  font-weight: 500;
+  margin-top: 20px;
   color: #2c3e50;
-  position: relative;
-  z-index: 2; /* Increased to be consistent with modal layering */
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+  padding: 12px 24px;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+#current-turn.player-x {
+  border-color: rgba(231, 76, 60, 0.3);
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.2);
+}
+
+#current-turn.player-o {
+  border-color: rgba(52, 152, 219, 0.3);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
 }
 
 /* Modal styling */
@@ -233,11 +245,6 @@ animation: tiny-bounce 0.15s ease;
   transition: background-color 0.3s ease;
 }
 
-/* Lighter background for profile modal */
-#profile-modal {
-  background-color: transparent; /* No dimming for profile modal */
-}
-
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto;
@@ -246,10 +253,13 @@ animation: tiny-bounce 0.15s ease;
   border-radius: 5px;
   width: 80%;
   max-width: 400px;
-  font-family: 'Roboto Mono', monospace;
 }
 
-/* Smaller profile modal */
+/* Lighter background for profile modal */
+#profile-modal {
+  background-color: transparent; /* No dimming for profile modal */
+}
+
 .profile-content {
   width: 70%;
   max-width: 300px;

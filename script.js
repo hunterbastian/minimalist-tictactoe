@@ -377,7 +377,16 @@ document.addEventListener('DOMContentLoaded', function() {
         // Update the current turn display if game is still active
         if (isGameActive) {
             currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-            currentTurnDisplay.textContent = `next turn: ${currentPlayer}`;
+            updateCurrentTurnDisplay();
+        }
+    }
+    
+    function updateCurrentTurnDisplay() {
+        const turnDisplay = document.getElementById('current-turn');
+        if (isGameActive) {
+            turnDisplay.textContent = `next turn: ${currentPlayer}`;
+            // Add player-specific class for styling
+            turnDisplay.className = currentPlayer === 'X' ? 'player-x' : 'player-o';
         }
     }
     
@@ -681,7 +690,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function checkResult() {
         let roundWon = false;
-
+        
         for (let i = 0; i < winningConditions.length; i++) {
             const [a, b, c] = winningConditions[i];
             if (board[a] === '' || board[b] === '' || board[c] === '') {
@@ -692,13 +701,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Change background color on win
                 document.body.style.backgroundColor = 'lightgreen'; 
-                
+             
                 // Increment wins for current profile
                 incrementWins();
-
+             
                 // Delay the message to allow the background color change to be visible
                 setTimeout(() => {
-                    showModal(`player ${currentPlayer} wins!`);
+                    // Check if AI is enabled and the winner is the AI player
+                    const winMessage = (aiEnabled && currentPlayer === aiPlayer) ? 
+                        'AI wins!' : `player ${currentPlayer} wins!`;
+                    showModal(winMessage);
                     document.body.style.backgroundColor = ''; // Reset color
                 }, 500);
                 break;
@@ -731,7 +743,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Reset current turn display
-        currentTurnDisplay.textContent = `next turn: ${currentPlayer}`;
+        updateCurrentTurnDisplay();
         
         // If the game was reset due to AI being disabled, make sure to remove any blur/message
         if (aiButtonSelected === false && aiEnabled === false) {
@@ -1029,5 +1041,5 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize
     initProfiles();
     updateAiDisplay();
-    currentTurnDisplay.textContent = `next turn: ${currentPlayer}`;
+    updateCurrentTurnDisplay(); // Initialize turn display with proper styling
 });
